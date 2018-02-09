@@ -115,6 +115,16 @@ function genesis_sample_comments_gravatar( $args ) {
 
 }
 
+//* Add support for custom header en vue d'un logo retina
+add_theme_support( ‘custom-header', array(
+‘header_image' => ”,
+‘header-selector' => ‘.site-title a',
+‘header-text' => true,
+‘height' => 300,
+‘width' => 800,
+) );
+
+
 /* Begin Microthemer Code au cas où on désactive cette extension laisser ce code */
 if (!defined('MT_IS_ACTIVE')) {
 	function add_microthemer_css() {
