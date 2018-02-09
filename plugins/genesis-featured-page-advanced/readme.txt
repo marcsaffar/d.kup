@@ -3,8 +3,8 @@ Contributors: ndiego, outermostdesign
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLSEBKWPL9UMN
 Tags: featured page, genesis, widget, featured content, Genesis Framework, genesiswp, page, widget-only, widgets
 Requires at least: 3.6
-Tested up to: 4.6 
-Stable tag: 1.9.3
+Tested up to: 4.9
+Stable tag: 1.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,15 +16,15 @@ An advanced version of the Genesis - Featured Page widget. Allows you to add a c
 
 That said, most Genesis users have probably stumbled upon the *Genesis - Featured Page* widget as a great way to add page teasers/links to your homepage, footer, sidebars, or really any widget area.
 
-However, sometimes you need additional functionality that is not offered in the core widget, such as adding a custom image or custom content. This is what *Genesis - Featured Page Advanced* does.  
+However, sometimes you need additional functionality that is not offered in the core widget, such as adding a custom image or custom content. This is what *Genesis - Featured Page Advanced* does.
 
 = Plugin Highlights =
 * **New:** You can now add a Custom Page Title
 * Display widget title above or below image (Defaults above)
 * Display page title above or below image (Defaults below)
-* Adds option for widget to link to a custom link 
+* Adds option for widget to link to a custom link
 * Adds custom image upload field
-* Adds option to adjust the size of custom images 
+* Adds option to adjust the size of custom images
 * Adds custom content field, which accepts shortcodes
 * Adds option to display the page excerpt
 * Adds option to remove the page link from the page title
@@ -32,16 +32,16 @@ However, sometimes you need additional functionality that is not offered in the 
 * Adds option to remove the page link from the featured or custom image
 * Adds option to insert the Learn More link on a new line
 * Set the target and rel attributes on all links
-* Fields show/hide based on user selection for cleaner UI 
+* Fields show/hide based on user selection for cleaner UI
 * Works alongside the original *Genesis - Featured Page* widget and other third party widgets
 * Uses the same CSS classes as the original Genesis widget, so any styling you are currently using will be passed to this widget
-* Genesis 2.0 and HTML5 compatible 
+* Genesis 2.0 and HTML5 compatible
 
-If you are looking for additional features, let me know in the plugin support forum. 
+If you are looking for additional features, let me know in the plugin support forum.
 
-**Disclaimer:** This plugin is essentially a forked version of the original *Genesis - Featured Page* widget. Props go to StudioPress for developing the widget, I just modified/enhanced it. 
+**Disclaimer:** This plugin is essentially a forked version of the original *Genesis - Featured Page* widget. Props go to StudioPress for developing the widget, I just modified/enhanced it.
 
-= Support This Plugin = 
+= Support This Plugin =
 
 There are a few ways you can help support the development of this plugin:
 
@@ -55,13 +55,19 @@ There are a few ways you can help support the development of this plugin:
 	* *Download the folder from Wordpress.org and zip the folder. Then upload via Plugins->Add New->Upload.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-**Please Note:** This plugin is only for Genesis Framework users. Genesis is a premium product by [StudioPress](http://www.studiopress.com). If you do not have Genesis 2.0+ or Wordpress 3.6+, the plugin will not activate. 
+**Please Note:** This plugin is only for Genesis Framework users. Genesis is a premium product by [StudioPress](http://www.studiopress.com). If you do not have Genesis 2.0+ or Wordpress 3.6+, the plugin will not activate.
 
 == Screenshots ==
 
 1. Admin and frontend view of the Genesis - Featured Page Advanced widget. Highlights normal usage and advanced usage.
 
 == Changelog ==
+
+= 1.9.5 - 2017/10/20 =
+* Fixed bug where the link title was displaying incorrectly when using a Custom Page Link (Thanks womed!)
+
+= 1.9.4 - 2017/10/20 =
+* Fixed bug where widgets would disappear when switching between Genesis and non-Genesis themes (Thanks neilgee!)
 
 = 1.9.3 - 2016/10/7 =
 * Fixed conflict with Page Builder by Site Origin (Thanks minnert!)

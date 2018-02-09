@@ -5,7 +5,7 @@
  * Settings
  * @author C.M. Kendrick <cindy@cleverness.org>
  * @package widget-css-classes
- * @version 1.5.0
+ * @version 1.5.2.1
  */
 
 /**
@@ -44,19 +44,33 @@ class WCSSC_Settings {
 
 		register_setting( $this->general_key, $this->general_key, array( $this, 'validate_input' ) );
 		add_settings_section( 'section_general', esc_attr__( 'Widget CSS Classes Settings', WCSSC_Lib::DOMAIN ), array( $this, 'section_general_desc' ), $this->general_key );
-		add_settings_field( 'show_number', esc_attr__( 'Add Widget Number Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array( 'key' => 'show_number' ) );
-		add_settings_field( 'show_location', esc_attr__( 'Add First/Last Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array( 'key' => 'show_location' ) );
-		add_settings_field( 'show_evenodd', esc_attr__( 'Add Even/Odd Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array( 'key' => 'show_evenodd' ) );
-		add_settings_field( 'show_id', esc_attr__( 'Show Additional Field for ID', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array( 'key' => 'show_id' ) );
+		add_settings_field( 'show_number', esc_attr__( 'Add Widget Number Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
+			'key' => 'show_number',
+		) );
+		add_settings_field( 'show_location', esc_attr__( 'Add First/Last Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
+			'key' => 'show_location',
+		) );
+		add_settings_field( 'show_evenodd', esc_attr__( 'Add Even/Odd Classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
+			'key' => 'show_evenodd',
+		) );
+		add_settings_field( 'show_id', esc_attr__( 'Show Additional Field for ID', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
+			'key' => 'show_id',
+		) );
 		add_settings_field( 'type', esc_attr__( 'Class Field Type', WCSSC_Lib::DOMAIN ), array( $this, 'type_option' ), $this->general_key, 'section_general' );
 		add_settings_field( 'defined_classes', esc_attr__( 'Predefined Classes', WCSSC_Lib::DOMAIN ), array( $this, 'defined_classes_option' ), $this->general_key, 'section_general' );
 		add_settings_field( 'fix_widget_params', esc_attr__( 'Fix widget parameters', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
-			'key' => 'fix_widget_params',
+			'key'  => 'fix_widget_params',
 			'desc' => esc_html__( 'Wrap widget in a <div> element if the parameters are invalid.', WCSSC_Lib::DOMAIN ),
 		) );
 		add_settings_field( 'filter_unique', esc_attr__( 'Remove duplicate classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
-			'key' => 'filter_unique',
+			'key'  => 'filter_unique',
 			'desc' => esc_html__( 'Plugins that run after this plugin could still add duplicates.', WCSSC_Lib::DOMAIN ),
+		) );
+		add_settings_field( 'translate_classes', esc_attr__( 'Translate classes', WCSSC_Lib::DOMAIN ), array( $this, 'show_yes_no_option' ), $this->general_key, 'section_general', array(
+			'key'  => 'translate_classes',
+			'desc' => esc_html__( 'Translate classes like `widget-first` and `widget-even`.', WCSSC_Lib::DOMAIN )
+				// Translators: %s stands for a link to translate.wordpress.org.
+				. ' ' . sprintf( esc_html__( 'Translations are taken from %s', WCSSC_Lib::DOMAIN ), '<a href="https://translate.wordpress.org/projects/wp-plugins/widget-css-classes" target="_blank">translate.wordpress.org</a>' ),
 		) );
 		do_action( 'widget_css_classes_settings' );
 	}
@@ -122,18 +136,26 @@ class WCSSC_Settings {
 		<?php
 	}
 
+	/**
+	 * @todo Move to separate class or split in different methods.
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 */
 	public function register_importexport_settings() {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
+		// @codingStandardsIgnoreLine
+		$get = $_GET; $post = $_POST;
+
 		$this->plugin_tabs['importexport'] = esc_attr__( 'Import/Export', WCSSC_Lib::DOMAIN );
 
 		$wcssc_message_class = '';
 		$wcssc_message       = '';
-		if ( isset( $_GET['wcssc_message'] ) ) {
-			switch ( $_GET['wcssc_message'] ) {
+		if ( isset( $get['wcssc_message'] ) ) {
+			switch ( $get['wcssc_message'] ) {
 				case 1:
 					$wcssc_message_class = 'updated';
 					$wcssc_message       = esc_attr__( 'Settings Imported', WCSSC_Lib::DOMAIN );
@@ -150,11 +172,11 @@ class WCSSC_Settings {
 		}
 
 		if ( ! empty( $wcssc_message ) ) {
-			echo '<div class=" ' . $wcssc_message_class . ' "><p>' . esc_html( $wcssc_message ) . '</p></div>';
+			echo '<div class=" ' . esc_attr( $wcssc_message_class ) . ' "><p>' . esc_html( $wcssc_message ) . '</p></div>';
 		}
 
 		// export settings
-		if ( isset( $_GET['widget-css-classes-settings-export'] ) ) {
+		if ( isset( $get['widget-css-classes-settings-export'] ) ) {
 			header( 'Content-Disposition: attachment; filename=widget-css-classes-settings.txt' );
 			header( 'Content-Type: text/plain; charset=utf-8' );
 			$general = get_option( 'WCSSC_options' );
@@ -164,12 +186,12 @@ class WCSSC_Settings {
 				// @codingStandardsIgnoreLine >> wp_json_encode is WP 4.1+
 				echo "$id\t" . json_encode( $text ) . "\n";
 			}
-			echo "[STOP=WCSSC SETTINGS]";
+			echo '[STOP=WCSSC SETTINGS]';
 			exit;
 		}
 
 		// import settings
-		if ( isset( $_POST['widget-css-classes-settings-import'] ) ) {
+		if ( isset( $post['widget-css-classes-settings-import'] ) ) {
 			$wcssc_message = 3;
 			if ( $_FILES['widget-css-classes-settings-import-file']['tmp_name'] ) {
 				$wcssc_message = 2;

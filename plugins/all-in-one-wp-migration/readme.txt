@@ -2,8 +2,8 @@
 Contributors: yani.iliev, bangelov, pimjitsawang
 Tags: move, transfer, copy, migrate, backup, clone, restore, db migration, wordpress migration, website migration, database export, database import, apoyo, sauvegarde, di riserva, バックアップ
 Requires at least: 3.3
-Tested up to: 4.8
-Stable tag: 6.53
+Tested up to: 4.9
+Stable tag: 6.62
 License: GPLv2 or later
 
 Move, transfer, copy, migrate, and backup a site with 1-click. Quick, easy, and reliable.
@@ -32,6 +32,9 @@ Mobile device compatible: All in One WP Plugin is the first plugin to offer true
 = Compatible with WordPress v3.3 to present =
 * We have a comprehensive Quality Assurance and testing process that ensures that the plugin is always compatible with the latest release of WordPress, but we don't support versions of WordPress prior to version 3.3 (2012)
 
+= WP-CLI Integration is included =
+* [WP-CLI Integration Documentation](https://help.servmask.com/knowledgebase/cli-integration/)
+
 = Support =
 * For the community version of the plugin please watch the instruction videos below and see our FAQ.
 * If you have more complex requirements, our team is here to help. If you have any questions please feel free to get in touch at [help.servmask.com](https://help.servmask.com/)
@@ -49,6 +52,7 @@ Mobile device compatible: All in One WP Plugin is the first plugin to offer true
 * [URL](https://servmask.com/products/url-extension)
 * [OneDrive](https://servmask.com/products/onedrive-extension)
 * [Box](https://servmask.com/products/box-extension)
+* [Mega](https://servmask.com/products/mega-extension)
 
 = Supported hosting providers =
 **The plugin does not have any dependancies, making it compatible with all PHP hosting providers. We support a vast range of hosting providers. Some of the most popular include:**
@@ -90,6 +94,90 @@ Alternatively you can download the plugin using the download button on this page
 3. Plugin Menu
 
 == Changelog ==
+= 6.62 =
+**Added**
+
+* Technical message if PHP is 32bit and backup is larger than 2GB on export
+* Technical message if db server is SQL Server on export/import
+
+**Fixed**
+
+* SQL regex pattern on import
+
+**Changed**
+
+* Confirmation message on import
+
+= 6.61 =
+**Added**
+
+* Disable wp-force-ssl plugin if current site is not SSL based on import
+* Support for Mega Extension
+
+= 6.60 =
+**Added**
+
+* Tested up to WordPress 4.9
+
+= 6.59 =
+**Added**
+
+* Disable wordpress-https plugin if current site is not SSL based on import
+* Support for Azure db on import
+* New button icons for cloud extensions
+
+= 6.58 =
+**Fixed**
+
+* Remove WP CLI commands on PHP 5.2 and below
+* Issue with files on export
+
+= 6.57 =
+**Added**
+
+* Disable really-simple-ssl plugin if current site is not SSL based on import
+* Support for WP-CLI
+
+= 6.56 =
+**Added**
+
+* Symlink directories on export
+* Support sub directories on Backups page
+* A cancel button on import confirm step
+
+**Fixed**
+
+* Support IE11
+* Wrong blogs.dir URL replacement
+* Wrong path network drive replacement (Windows)
+* Text placeholders of first find/replace inputs on export
+
+**Changed**
+
+* Added loading indicator to feedback and report a problem forms
+* Do not clear cache on export
+* Skip files that contain new line on export
+
+= 6.55 =
+**Added**
+
+* Percentage indicator on "Unpacking archive" step
+* Chunking mechanism when adding database.sql to wpress file on export
+
+**Changed**
+
+* Display 2GB+ value if file size cannot be obtained on Backups page
+* Move COMMIT condition after processing all table records
+
+**Fixed**
+
+* Directory separator of archiver on Windows
+
+= 6.54 =
+**Changed**
+
+* Use late row lookup to perform database export
+
 = 6.53 =
 **Added**
 
