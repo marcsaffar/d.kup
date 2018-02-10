@@ -115,6 +115,8 @@ function genesis_sample_comments_gravatar( $args ) {
 
 }
 
+//* Enlever la balise H1 du titre du site : classe = site-title
+add_filter( 'genesis_pre_get_option_home_h1_on', '__return_true' );
 
 
 /* Begin Microthemer Code au cas où on désactive cette extension laisser ce code */

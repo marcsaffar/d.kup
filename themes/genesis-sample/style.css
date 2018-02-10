@@ -1035,7 +1035,7 @@ img.alignright,
 }
 
 .site-header > .wrap {
-	padding: 20px 0;
+	padding: 45px 0;/*ms j'augmente le padding top et bottom*/
 }
 
 /* ## Title Area
@@ -1076,11 +1076,12 @@ img.alignright,
 	background-position: center !important;
 	background-size: contain !important;
 	float: left;
-	min-height: 80px;
+	min-height: 92px;/*ms j'augmente cette valeur jusqu'à obtenir la bonne largeur du logo*/
 	width: 100%;
 }
 
 .site-description {
+	text-indent: 0 !important;/*ms réglage pour recentrer la description*/
 	font-size: 16px;
 	font-size: 1.6rem;
 	font-weight: 400;
