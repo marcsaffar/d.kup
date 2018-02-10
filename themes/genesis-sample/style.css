@@ -1072,23 +1072,13 @@ img.alignright,
 	text-decoration: none;
 }
 
-/* Pour retina ajouté par ms */
-
-.header-image .site-title a {
-background-size: 260px 85px !important;
-min-height: 85px;
-width: 100%;
-}
-
-
-/* désactivé par ms pour retina
 .header-image .site-title > a {
 	background-position: center !important;
 	background-size: contain !important;
 	float: left;
 	min-height: 80px;
 	width: 100%;
-}*/
+}
 
 .site-description {
 	font-size: 16px;
