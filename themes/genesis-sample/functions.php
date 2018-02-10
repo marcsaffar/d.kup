@@ -118,6 +118,14 @@ function genesis_sample_comments_gravatar( $args ) {
 //* Enlever la balise H1 du titre du site : classe = site-title
 add_filter( 'genesis_pre_get_option_home_h1_on', '__return_true' );
 
+//* Changer la balise (wrap) autour de la description du site de p pour h2
+add_filter( 'genesis_site_description_wrap', 'custom_site_desctiption_wrap' );
+function custom_site_desctiption_wrap( $wrap ) {
+
+$wrap = 'h2';
+return $wrap;
+
+}  
 
 /* Begin Microthemer Code au cas où on désactive cette extension laisser ce code */
 if (!defined('MT_IS_ACTIVE')) {
