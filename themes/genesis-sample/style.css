@@ -1,9 +1,9 @@
 /*
-	Theme Name: Genesis Sample
-	Theme URI: http://www.studiopress.com/
-	Description: This is the sample theme created for the Genesis Framework.
-	Author: StudioPress
-	Author URI: http://www.studiopress.com/
+	Theme Name: Marc Saffar pour D.KUP
+	Theme URI: http://www.marcsaffar.com/
+	Description: Thème sur mesure pour D.KUP sur une création graphique de Marjorie Pasqualini.
+	Author: Marc Saffar
+	Author URI: http://www.marcsaffar.com/
 
 	Version: 2.2.4
 
@@ -1035,7 +1035,7 @@ img.alignright,
 }
 
 .site-header > .wrap {
-	padding: 45px 0;/*ms j'augmente le padding top et bottom*/
+	padding: 45px 0 25px 0;/*ms j'augmente le padding top et règle le bottom*/
 }
 
 /* ## Title Area
@@ -1049,7 +1049,7 @@ img.alignright,
 
 .header-image .title-area {
 	margin: 0 auto;
-	max-width: 300px;
+	max-width: 620px;/*ms j'augmente cette valeur pour que la description tienne sur une ligne*/
 	padding: 0;
 }
 
@@ -1078,14 +1078,17 @@ img.alignright,
 	float: left;
 	min-height: 92px;/*ms j'augmente cette valeur jusqu'à obtenir la bonne largeur du logo*/
 	width: 100%;
+	margin-bottom: 30px;
 }
 
 .site-description {
+	letter-spacing: 0.5px;
 	text-indent: 0 !important;/*ms réglage pour recentrer la description*/
 	font-size: 16px;
 	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 1.5;
+	color: #3e3633;
 }
 
 .site-description,
