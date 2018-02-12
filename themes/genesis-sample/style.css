@@ -1135,7 +1135,7 @@ img.alignright,
 	color: #333;
 	text-decoration: none;
 	display: block;
-	padding: 32px 20px;
+	padding: 25px 20px;/*ms je réduit le paddig top et bottom pour obtenir 60px de haut*/
 }
 
 .genesis-nav-menu a:hover,
@@ -1227,9 +1227,30 @@ img.alignright,
 /* ## After Header Navigation
 --------------------------------------------- */
 
+/*ms j'ajoute ces style*/
+#menu-menu-principal .menu-item a {
+    color:  #ffffff;
+}
+
+#menu-menu-principal .menu-item {
+	margin-right: -4px;/*pour supprimer les blancs entre éléments du menu*/
+    background-color: #a94527;
+}
+
+#menu-menu-principal .current-menu-item {
+    background-color: #691c16;
+}
+
+#menu-menu-principal .menu-item:hover {
+    background-color: #691c16;
+}
+
+/*fin de ms j'ajoute ces style*/
+
 .nav-primary {
-	background-color: #fff;
-	border-top: 1px solid #eee;
+	text-align: center;
+	background: #ffffff url(http://dkup/wp-content/themes/genesis-sample/images/gif-fond-menu-1500x60.gif) repeat-y;
+	/*réglage du fond du menu pour couleur sur la moitié de largeur*/
 }
 
 /* ## Footer Navigation
