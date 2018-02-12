@@ -1249,7 +1249,7 @@ img.alignright,
 
 .nav-primary {
 	text-align: center;
-	background: #ffffff url(http://dkup/wp-content/themes/genesis-sample/images/gif-fond-menu-1500x60.gif) repeat-y;
+	background: #ffffff url(/wp-content/themes/genesis-sample/images/gif-fond-menu-1500x60.gif) repeat-y;
 	/*réglage du fond du menu pour couleur sur la moitié de largeur*/
 }
 
