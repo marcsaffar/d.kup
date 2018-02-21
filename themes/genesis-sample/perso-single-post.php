@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Article personalisé
+ * Template Name: Article personnalisé
  * Template Post Type: post, page, product
  */
 
