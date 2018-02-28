@@ -1496,7 +1496,7 @@ p.entry-meta {
 
 	.site-inner,
 	.wrap {
-		max-width: 1140px;
+		/*max-width: 1140px;*/
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,
@@ -1537,7 +1537,7 @@ p.entry-meta {
 
 	.site-inner,
 	.wrap {
-		max-width: 960px;
+		/*max-width: 960px;*/
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,
