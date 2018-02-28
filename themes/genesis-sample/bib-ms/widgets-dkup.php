@@ -1,0 +1,2 @@
+<?php
+//mes fonctions personnalisées
