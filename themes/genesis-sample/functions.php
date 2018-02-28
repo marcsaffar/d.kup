@@ -127,6 +127,10 @@ return $wrap;
 
 }  
 
+//J'ajoute l'inclusion des créations de widget
+include_once( get_stylesheet_directory() . '/bib-ms/widgets-dkup.php' );
+
+
 /* Begin Microthemer Code au cas où on désactive cette extension laisser ce code */
 if (!defined('MT_IS_ACTIVE')) {
 	function add_microthemer_css() {
