@@ -568,7 +568,7 @@ th:first-child {
 .site-inner,
 .wrap {
 	margin: 0 auto;
-	max-width: 1280px;
+	max-width: 100%;
 }
 
 .site-inner {
@@ -1573,7 +1573,7 @@ p.entry-meta {
 
 	.site-inner,
 	.wrap {
-		max-width: 800px;
+		max-width: 100%;
 	}
 
 	.content,
@@ -1773,7 +1773,7 @@ p.entry-meta {
 	}
 
 	.site-inner {
-		padding: 5% 5% 0;
+		/* padding: 5% 5% 0; */
 	}
 
 	.wrap {
@@ -1965,4 +1965,4 @@ p.entry-meta {
 		page-break-before: avoid;
 	}
 
-}
+}
