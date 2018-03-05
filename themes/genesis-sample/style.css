@@ -194,7 +194,7 @@ a:focus {
 
 p {
 	margin: 0 0 28px;
-	padding: 0;
+	padding:;
 }
 
 ol,
@@ -1274,7 +1274,7 @@ img.alignright,
 .entry {
 	background-color: #fff;
 	margin-bottom: 40px;
-	padding: 70px 80px;
+	/* padding: 70px 80px; */
 }
 
 .entry-content ol,
