@@ -13,9 +13,11 @@ $TvrLang = array(
 	'click' => esc_html__('click', 'microthemer'),
 	*/
 
+	'multi_tab_short' => esc_html__('Multiple tabs/users issue', 'microthemer'),
+	'multi_tab_long' => esc_html__('MT settings were updated more recently by another user or browser tab. Saving from this outdated tab could cause data loss. Please reload the page instead of saving from this tab (to get the latest changes).',  'microthemer'),
+
 	'inline_animation_short' => esc_html__('Animation fails with display:inline', 'microthemer'),
 	'inline_animation_long' => esc_html__('Microthemer\'s animate.css animations do not work well when elements have a Display value of inline. To fix, go to the Behaviour property group and set the Display property to e.g. inline-block', 'microthemer'),
-
 
 	'learn_more' => esc_html__('Learn more', 'microthemer'),
 	'slow_styles_tab' => esc_html__('Styles tab slows the browser: %1$s sec (avg)', 'microthemer'),

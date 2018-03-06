@@ -5,7 +5,7 @@ Plugin URI: https://themeover.com/microthemer
 Text Domain: microthemer
 Domain Path: /languages
 Description: Microthemer is a feature-rich visual design plugin for customizing the appearance of ANY WordPress Theme or Plugin Content (e.g. posts, pages, contact forms, headers, footers, sidebars) down to the smallest detail. For CSS coders, Microthemer is a proficiency tool that allows them to rapidly restyle a WordPress theme or plugin. For non-coders, Microthemer's intuitive interface and "Double-click to Edit" feature opens the door to advanced theme and plugin customization.
-Version: 5.1.4.7
+Version: 5.1.5.9
 Author: Themeover
 Author URI: https://themeover.com
 */
@@ -111,7 +111,7 @@ if ( is_admin() ) {
 		// define
 		class tvr_microthemer_admin {
 
-			var $version = '5.1.4.7';
+			var $version = '5.1.5.9';
 			var $db_chg_in_ver = '4.8.9';
 			var $locale = '';
 			var $time = 0;
@@ -127,6 +127,7 @@ if ( is_admin() ) {
 			var $micro_ver_num = 'micro_revisions_version';
 			var $localizationDomain = "microthemer";
 			var $globalmessage = array();
+			var $outdatedTabIssue = 0;
 			var $ei = 0; // error index
 			var $permissionshelp;
 			var $microthemeruipage = 'tvr-microthemer.php';
@@ -1882,8 +1883,8 @@ if ( is_admin() ) {
 
 			// Save the UI styles to the database - create hybrid of settings from existing non-loaded styles and saved styles
 			function saveUiOptions($theOptions){
-				// create debug save file if specified at top of script
 
+			    // create debug save file if specified at top of script
 				if ($this->debug_save) {
 					$debug_file = $this->debug_dir . 'debug-save.txt';
 					$write_file = fopen($debug_file, 'w');
@@ -1893,6 +1894,25 @@ if ( is_admin() ) {
 					$data.= "\n\n" . __('### The existing options in the DB', 'microthemer') . "\n\n";
 					$data.= print_r($this->options, true);
 				}
+
+				/**/// do safety check to make sure newer settings haven't been applied in another tab
+                if ( isset($this->options['non_section']['last_save_time'])
+                     and isset($theOptions['non_section']['last_save_time'])
+                         and $this->options['non_section']['last_save_time'] != $theOptions['non_section']['last_save_time']){
+
+                    // todo i18n strings should be stored in central place (class prop or in DB prefereably) this is dupe text
+                    $this->log(
+		                esc_html__('Multiple tabs/users issue', 'microthemer'),
+		                '<p>' . esc_html__('MT settings were updated more recently by another user or browser tab. Saving from this outdated tab could cause data loss. Please reload the page instead of saving from this tab (to get the latest changes).', 'microthemer') . '</p>'
+	                );
+	                $this->outdatedTabIssue = 1;
+	                return false;
+                } else {
+	                // update last save time
+	                $theOptions['non_section']['last_save_time'] = time();
+                }
+
+
 				// loop through all the state trackers
 				if (!empty($theOptions['non_section']['view_state']) and is_array($theOptions['non_section']['view_state'])) {
 					foreach($theOptions['non_section']['view_state'] as $section_name => $array) {
@@ -1905,14 +1925,37 @@ if ( is_admin() ) {
 								if ($css_selector == 'this') continue;
 
 								// if the selector options haven't been pulled into the UI, use existing
-								if ($view_state == 0) {
-									// check if user disabled/enabled non-loaded sel before overwriting
+								if (
+								        $view_state == 0
+								        //$view_state == 'hannah'
+                                ) {
+
+								    // check if user disabled/enabled non-loaded sel before overwriting
 									$dis = false;
 									if (!empty($theOptions[$section_name][$css_selector]['disabled'])){
 										$dis = true;
 									}
+
+									if ($this->debug_save) {
+                                        if (empty($this->options[$section_name][$css_selector])){
+                                            $data.= 'danger, DB not set: ' . $section_name . ', ' . $css_selector
+                                                    . "\n\n" . print_r($this->options, true);
+	                                        $this->log(
+		                                        esc_html__('Incomplete save', 'microthemer'),
+		                                        '<p>DB not set for: ' . $section_name . ' '  . $css_selector. '</p>'
+	                                        );
+                                        }
+										
+									}
+
 									// replace sel with settings in DB
+                                    // todo setup a warning if this happens with 'send error report' option
+                                    // abandon save but give user the option to force save, otherwise malformed sels
+                                    // from a previous mishap can't be deleted
 									$theOptions[$section_name][$css_selector] = $this->options[$section_name][$css_selector];
+									//$theOptions[$section_name][$css_selector] = null;
+
+
 									// disable if necessary
 									if ($dis){
 										$theOptions[$section_name][$css_selector]['disabled'] = 1;
@@ -1933,8 +1976,12 @@ if ( is_admin() ) {
 								if (!empty($this->options['non_section']['m_query']) and
 									is_array($this->options['non_section']['m_query'])) {
 									foreach ($this->options['non_section']['m_query'] as $m_key => $array) {
-										// if MQ not loaded, pull in from existing
-										if ($view_state == 0) {
+
+									    // if MQ not loaded, pull in from existing
+										if (
+										        $view_state == 0
+
+                                        ) {
 											if (!empty($array[$section_name][$css_selector])
 												and is_array($array[$section_name][$css_selector])) {
 
@@ -1968,6 +2015,7 @@ if ( is_admin() ) {
 					fwrite($write_file, $data);
 					fclose($write_file);
 				}
+
 				update_option($this->optionsName, $theOptions);
 				$this->options = get_option($this->optionsName);
 
@@ -2341,6 +2389,8 @@ if ( is_admin() ) {
 								<div class="script-feedback">
 									<span id="sanit-export-name">'.$new_select_option.'</span>
 									<span id="google-url-to-refresh">'.$this->preferences['g_url'].'</span>
+									<span id="outdated-tab-issue">'.$this->outdatedTabIssue.'</span>
+									<span id="returned-save-time">'.$this->options['non_section']['last_save_time'].'</span>
 								</div>
 							</div>';
 
@@ -5504,6 +5554,10 @@ if ( is_admin() ) {
 				}
 
 				$html.= '
+                    <li class="scroll-lr-buttons">
+                        <span class="mt-scroll-row mt-scroll-left mt-scroll-style"></span>
+                        <span class="mt-scroll-row mt-scroll-right mt-scroll-style"></span>
+                    </li>
 				</ul>';
 
 				return $html;
@@ -8455,15 +8509,24 @@ if ( is_admin() ) {
 
 					//removed Theme URI: '.strip_tags(stripslashes($_POST['theme_meta']['URI'])).'
 
+                    $Name = !empty($_POST['theme_meta']['Name']) ? $_POST['theme_meta']['Name'] : '';
+					$PackType = !empty($_POST['theme_meta']['PackType']) ? $_POST['theme_meta']['PackType'] : '';
+					$Description = !empty($_POST['theme_meta']['Description']) ? $_POST['theme_meta']['Description'] : '';
+					$Author = !empty($_POST['theme_meta']['Author']) ? $_POST['theme_meta']['Author'] : '';
+					$AuthorURI = !empty($_POST['theme_meta']['AuthorURI']) ? $_POST['theme_meta']['AuthorURI'] : '';
+					$Template = !empty($_POST['theme_meta']['Template']) ? $_POST['theme_meta']['Template'] : '';
+					$Version = !empty($_POST['theme_meta']['Version']) ? $_POST['theme_meta']['Version'] : '';
+					$Tags = !empty($_POST['theme_meta']['Tags']) ? $_POST['theme_meta']['Tags'] : '';
+
 					$data = '/*
-Theme Name: '.strip_tags(stripslashes($_POST['theme_meta']['Name'])).'
-Pack Type: '.strip_tags(stripslashes($_POST['theme_meta']['PackType'])).'
-Description: '.strip_tags(stripslashes(str_replace(array("\n", "\r"), array(" ", ""), $_POST['theme_meta']['Description']))).'
-Author: '.strip_tags(stripslashes($_POST['theme_meta']['Author'])).'
-Author URI: '.strip_tags(stripslashes($_POST['theme_meta']['AuthorURI'])).'
-Template: '.strip_tags(stripslashes($_POST['theme_meta']['Template'])).'
-Version: '.strip_tags(stripslashes($_POST['theme_meta']['Version'])).'
-Tags: '.strip_tags(stripslashes($_POST['theme_meta']['Tags'])).'
+Theme Name: '.strip_tags(stripslashes($Name)).'
+Pack Type: '.strip_tags(stripslashes($PackType)).'
+Description: '.strip_tags(stripslashes(str_replace(array("\n", "\r"), array(" ", ""), $Description))).'
+Author: '.strip_tags(stripslashes($Author)).'
+Author URI: '.strip_tags(stripslashes($AuthorURI)).'
+Template: '.strip_tags(stripslashes($Template)).'
+Version: '.strip_tags(stripslashes($Version)).'
+Tags: '.strip_tags(stripslashes($Tags)).'
 DateCreated: '.date('Y-m-d').'
 */';
 
@@ -8852,7 +8915,7 @@ if (!is_admin()) {
 			var $preferencesName = 'preferences_themer_loader';
 			// @var array $preferences Stores the ui options for this plugin
 			var $preferences = array();
-			var $version = '5.1.4.7';
+			var $version = '5.1.5.9';
 			var $microthemeruipage = 'tvr-microthemer.php';
 			var $mt_front_nonce = 'mt-temp-nonce';
 			var $file_stub = '';

@@ -1,5 +1,31 @@
 CHANGELOG
 
+= 5.1.5.9 (Feb 17th, 2018) =
+
+# Bugs fixed
+* Scroll buttons appeared unnecessarily on custom styles code editor.
+* The height of the 'View generated CSS code' editor didn't dynamically adjust to changes in the height of the browser window.
+
+= 5.1.5.7 (Feb 16th, 2018) =
+
+# Bugs fixed
+* Renaming a folder could generate a JS error if the folder name was similar to the folder of the current selector, but not the current folder.
+
+= 5.1.5.6 (Feb 15th, 2018) =
+
+# Enhancement
+* The event target field supports jQuery-style dom selection syntax to specify elements relative to the triggering element. Example syntax: .faq-answer|next(). See Microthemer's in-program docs for the event target property for more info.
+* Style options always run on a single row. They do not wrap onto multiple lines if the window is not wide enough for the content. Instead, horizontal scroll buttons will appear.
+* Microthemer prevents saving settings from a stale tab to prevent overwriting newer styles and the potential loss of selectors that have been renamed or moved to a different folder. Lost selectors appeared as blank items in the selector menu when an outdated tab overwrote settings applied more recently by another tab.
+
+# Bugs fixed
+* Using transition event values with the 'Always include !important' preference setting enabled output an invalid 'event-value' CSS property. And also included other unnecessary properties with 'initial !important' as the value.
+* Using event-based animation/transition (e.g. :hover, click, mouseenter) on selectors with a pseudo element (e.g. ::before) didn't work.
+* Applying the transition event property via responsive tabs could cause a JS error under some circumstances.
+* When moving a selector to or from a disabled folder, animation and transition styles remained disabled/active rather than updating according to the disabled/active status of the new folder.
+* Disabled animation JavaScripts events remained active, even thought the CSS was successfully disabled.
+* Undefined notice when uploading design pack (if WP_DEBUG was enabled in wp-config.php).
+
 = 5.1.4.7 (Feb 7th, 2018) =
 
 # Bugs fixed

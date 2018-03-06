@@ -4127,6 +4127,16 @@ $propertyOptions['animation']['event'] = array(
 	)
 );
 
+
+// use common dom relative explanation and ref values for anim/trans event targets
+$dom_relative_text = '<p>But what if you only want the effect to apply to a single element, relative to the position of the triggering element? Image an FAQs page with multiple headings and answer blocks. You apply a click event to the headings to reveal answers, but you only want this to reveal the single answer immediately following the heading that was clicked - not all answers on the page. Microthemer supports this behaviour with jQuery-style syntax entered into the same input field separated with a pipe e.g. <i>.faq-answer|next()</i>. See below for details and more examples.</p>';
+$event_target_ref_values = array(
+	'(selector)' => "Enter a CSS selector e.g. <i>img.avatar</i>",
+	'(selector|path syntax)' => "<p>Enter a CSS selector e.g. <i>img.avatar</i>, followed by a pip (|), followed by jQuery-style dom selection syntax e.g. <i>closest('article')</i>. All together, this would look like: <i>img.avatar|closest('article')</i>.</p>
+<p>Chaining with dots (.) is supported. Quotes, brackets and selectors inside brackets are optional. Microthemer will default to using the selector entered before the pipe for the following directives: <i>closest, parents, find, children, siblings</i>. Microthemer also supports the these directives (without defaulting to a selector): <i>prev, next, parent</i>.</p> 
+<p>Example: <i>img.avatar|next.find</i> equates to <i>img.avatar|next().find('img.avatar')</i></p>",
+);
+
 // animation event target (custom)
 $propertyOptions['animation']['event_target'] = array(
 	'short_label' => esc_html__('JS Event Target', 'microthemer'),
@@ -4135,10 +4145,9 @@ $propertyOptions['animation']['event_target'] = array(
 	'input-class' => 'size-big event-target-input',
 	'icon' => '10, 4, B',
 	// ref
-	'ref_desc' => "<p>Custom Microthemer option. Choose which element the animation should be applied to once it is triggered by a JavaScript event (this will not work with CSS events). If you leave this field blank, the animation will be applied to the element the current selector targets - the single element that triggered the event. But sometimes you might want to specify a custom CSS selector to apply the animation to different element(s). For example, clicking one element could animate a related element close by.</p>",
-	'ref_values' => array(
-		'(selector)' => "Enter a CSS selector e.g. img.avatar",
-	)
+	'ref_desc' => "<p>Custom Microthemer option. Choose which element the animation should be applied to once it is triggered by a JavaScript event (this will not work with CSS events). If you leave this field blank, the animation will be applied to the element the current selector targets - the single element that triggered the event. But sometimes you might want to specify a custom CSS selector, so you can apply the animation to different element(s). For example, clicking one element could animate a related element close by.</p>"
+ . $dom_relative_text,
+	'ref_values' => $event_target_ref_values
 );
 
 
@@ -4354,10 +4363,9 @@ $propertyOptions['transition']['event_target'] = array(
 	'input-class' => 'size-big event-target-input',
 	'icon' => '10, 4, B',
 	// ref
-	'ref_desc' => "<p>Custom Microthemer option. Choose which element the transition should be applied to once it is triggered by a JavaScript event (this will not work with CSS events). If you leave this field blank, the transition will be applied to the element the current selector targets - the single element that triggered the event. But sometimes you might want to specify a custom CSS selector to apply the transition to different element(s). For example, clicking one element could transition the opacity of a related element close by.</p>",
-	'ref_values' => array(
-		'(selector)' => "Enter a CSS selector e.g. img.avatar",
-	)
+	'ref_desc' => "<p>Custom Microthemer option. Choose which element the transition should be applied to once it is triggered by a JavaScript event (this will not work with CSS events). If you leave this field blank, the transition will be applied to the element the current selector targets - the single element that triggered the event. But sometimes you might want to specify a custom CSS selector to apply the transition to different element(s). For example, clicking one element could transition the opacity of a related element close by.</p>"
+	. $dom_relative_text,
+	'ref_values' => $event_target_ref_values
 );
 
 

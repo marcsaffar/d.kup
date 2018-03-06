@@ -910,6 +910,12 @@ if ($this->edge_mode['active']){
                 . esc_html($active_events).
              '</textarea>';
 
+
+		// send the time settings were last saved to ensure another tabs hasn't saved settings more recently
+        $last_save_time = !empty($this->options['non_section']['last_save_time']) ?
+            $this->options['non_section']['last_save_time'] : '';
+		echo '<input id="send-last-save-time" type="hidden" name="tvr_mcth[non_section][last_save_time]" 
+		value="'.esc_attr($last_save_time).'" />';
 		?>
 
 		</form>
@@ -1698,7 +1704,8 @@ if ($this->edge_mode['active']){
 					?>
 				</div>
 
-				<div class="explain">
+				<?php /*
+                <div class="explain">
 					<div class="heading link explain-link"><?php esc_html_e('About this feature', 'microthemer'); ?></div>
 
 					<div class="full-about">
@@ -1721,6 +1728,8 @@ if ($this->edge_mode['active']){
 					</div>
 
 				</div>
+                */
+                ?>
 			</div>
 			<?php echo $this->end_dialog(esc_html_x('Close', 'verb', 'microthemer'), 'span', 'close-dialog'); ?>
 

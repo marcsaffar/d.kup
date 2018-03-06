@@ -13,13 +13,13 @@ A visual theme editor for responsively customizing the appearance of any WordPre
 
 == Description ==
 
-Microthemer is a feature-rich visual design plugin for responsively customizing the appearance of any WordPress theme or plugin content (e.g. contact forms), down to the smallest detail. This free version limits you styling 15 things. To unlock the full program, you can purchase a <a href="http://themeover.com/microthemer/" target="_blank">Standard</a> ($45) or <a href="http://themeover.com/microthemer/" target="_blank">Developer</a> ($90) license. Microthemer caters for both coders and non-coders.
+Microthemer is a feature-rich visual design plugin for responsively customizing the appearance of any WordPress theme or plugin content (e.g. contact forms), down to the smallest detail. Microthemer caters for both coders and non-coders.
 
 = Main Features (for all users) =
 
 1. **Style anything** on your web page, including headers, menus, sidebars footers, and plugin content.
 2. **Intuitive visual editing**.
-3. **Over 100 style options** at your disposal (e.g. animation, Google Web Fonts, background color, font-family, CSS3 gradients, drop shadow etc).
+3. **Over 100 style options** at your disposal e.g. Google Web Fonts, background color, font-family, CSS3 gradients, drop shadow etc. Pro-only styles include animation, transition, and flexbox.
 4. **Design responsively** without the usual headaches. Preview your site at different screen sizes and apply *media queries styles* without writing code.
 5. **Export your designs** as a zip file. For sharing with friends, or transferring between domains.
 6. **In-program docs** so you can learn about CSS, or refresh your memory.
@@ -49,6 +49,9 @@ Microthemer is a feature-rich visual design plugin for responsively customizing 
 7. **Keyboard shortcuts** for common actions.
 8. **Validation** of custom selectors with visual feedback as you type.
 9. **Hide from clients** by uninstalling or deactivating, but still use the CSS Microthemer generates by copying and pasting a few lines of PHP code to your theme's functions.php file.
+
+= Free VS Premium version =
+This free version limits you styling 15 things, and doesn't include flexbox, transition, or animation features. To unlock the full program, you can purchase a <a href="http://themeover.com/microthemer/" target="_blank">Standard</a> ($45) or <a href="http://themeover.com/microthemer/" target="_blank">Developer</a> ($90) license.
 
 = Getting started video  =
 
@@ -95,6 +98,32 @@ Microthemer has built-in documentation! Just click the help icon (top right of t
 
 
 == Changelog ==
+
+= 5.1.5.9 (Feb 17th, 2018) =
+
+# Bugs fixed
+* Scroll buttons appeared unnecessarily on custom styles code editor.
+* The height of the 'View generated CSS code' editor didn't dynamically adjust to changes in the height of the browser window.
+
+= 5.1.5.7 (Feb 16th, 2018) =
+
+# Bugs fixed
+* Renaming a folder could generate a JS error if the folder name was similar to the folder of the current selector, but not the current folder.
+
+= 5.1.5.6 (Feb 15th, 2018) =
+
+# Enhancement
+* The event target field supports jQuery-style dom selection syntax to specify elements relative to the triggering element. Example syntax: .faq-answer|next(). See Microthemer's in-program docs for the event target property for more info.
+* Style options always run on a single row. They do not wrap onto multiple lines if the window is not wide enough for the content. Instead, horizontal scroll buttons will appear.
+* Microthemer prevents saving settings from a stale tab to prevent overwriting newer styles and the potential loss of selectors that have been renamed or moved to a different folder. Lost selectors appeared as blank items in the selector menu when an outdated tab overwrote settings applied more recently by another tab.
+
+# Bugs fixed
+* Using transition event values with the 'Always include !important' preference setting enabled output an invalid 'event-value' CSS property. And also included other unnecessary properties with 'initial !important' as the value.
+* Using event-based animation/transition (e.g. :hover, click, mouseenter) on selectors with a pseudo element (e.g. ::before) didn't work.
+* Applying the transition event property via responsive tabs could cause a JS error under some circumstances.
+* When moving a selector to or from a disabled folder, animation and transition styles remained disabled/active rather than updating according to the disabled/active status of the new folder.
+* Disabled animation JavaScripts events remained active, even thought the CSS was successfully disabled.
+* Undefined notice when uploading design pack (if WP_DEBUG was enabled in wp-config.php).
 
 = 5.1.4.7 (Feb 7th, 2018) =
 
