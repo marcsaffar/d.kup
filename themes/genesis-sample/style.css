@@ -1556,7 +1556,7 @@ img.image.wp-image-30.attachment-full.size-full {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+44,000000+74,000000+100&0+0,0+44,0.65+74,0+100 */
 	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 44%, rgba(0,0,0,0.65) 74%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 44%,rgba(0,0,0,0.65) 74%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(185,255,255,0) -10%,rgba(255,255,255,0) 72%,rgba(0, 0, 0, 0.2) 69%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: linear-gradient(to bottom, rgba(185,255,255,0) -10%,rgba(255,255,255,0) 72%,rgba(0, 0, 0, 0.04) 69%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 	
 	
@@ -1572,6 +1572,30 @@ img.image.wp-image-30.attachment-full.size-full {
 .dkup-man.zone-widget {
 	padding-top: 3%;
 	padding-left: 20%;
+	
+	/*début dégradé*/
+	background: rgba(255,255,255,0);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 86%, rgba(224,224,224,0.88) 88%, rgba(254,254,254,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(86%, rgba(255,255,255,0.86)), color-stop(88%, rgba(224,224,224,0.88)), color-stop(100%, rgba(254,254,254,1)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 86%, rgba(224,224,224,0.88) 88%, rgba(254,254,254,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 86%, rgba(224,224,224,0.88) 88%, rgba(254,254,254,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 86%, rgba(224,224,224,0.88) 88%, rgba(254,254,254,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 86%, rgba(224,224,224,0.88) 88%, rgba(254,254,254,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fefefe', GradientType=0 );
+	
+	/*fin dégradé*/
+	
+	
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+44,000000+74,000000+100&0+0,0+44,0.65+74,0+100 */
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 44%, rgba(0,0,0,0.65) 74%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 44%,rgba(0,0,0,0.65) 74%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(185,255,255,0) -10%,rgba(255,255,255,0) 72%,rgba(0, 0, 0, 0.04) 69%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+	
+	
+	/*fin dégradé*/
+	/*background: url(/wp-content/uploads/2018/03/fond-degrade-dkup2x.jpg) no-repeat 0 25%;*/
+	
 	
 }
 
