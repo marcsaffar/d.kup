@@ -1531,7 +1531,7 @@ img.image.wp-image-30.attachment-full.size-full {
     height: 30px;
 }
 
-/*Zône widget 3 d.kup woman*/
+/*Zône widget 3Dkup woman*/
 .imagewoman {
 	width: 438px;
 	height:  380px;
@@ -1564,6 +1564,16 @@ img.image.wp-image-30.attachment-full.size-full {
 	/*background: url(/wp-content/uploads/2018/03/fond-degrade-dkup2x.jpg) no-repeat 0 25%;*/
 }
 
+/*Zône widget 3DKUP man*/
+.imageman {
+	width:  250px;
+	height:  380px;
+}
+.dkup-man.zone-widget {
+	padding-top: 3%;
+	padding-left: 20%;
+	
+}
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
